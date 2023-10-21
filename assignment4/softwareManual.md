@@ -614,9 +614,9 @@ The output is
           return (function(x) - function(x - h)) / h;
       }
 
-<a id="Linf-Norm"></a>
+<a id="central-difference"></a>
 
-**Routine Name:** 
+**Routine Name:** Central Difference
 
 **Author:** Elsa Schutfort 
 
@@ -624,31 +624,58 @@ The output is
 
 The following line will produce a program **__** that can be ran. 
 
-      $ gcc -o __ __.c
+      $ gcc -o central-difference central-difference.c
 
-**Description/Purpose:** 
+**Description/Purpose:** The purpose of this routine is to compute the approximation of the derivative of a function at a given point using a given h value.
 
-**Input:** 
+**Input:** The routine inputs a function, x value, and h value.
 
-**Output:** 
+**Output:** The routine outputs the approximation of the derivative of the function at the x value inputted.
 
-      output code
+      Central Difference at a = 1.57079600 with h = 1.00000000e-10: -1.0000000827
 
 **Usage/Example:**
 
-This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
-
-    double vector[] = {1.2, -3.4, 5.6, -7.8, 9.0}; // Replace with your vector
-    int size = sizeof(vector) / sizeof(vector[0]);
-
-    double result = linfNorm(vector, size);
-    printf("L∞-Distance: %.2lf\n", result);
+      double a_value = 1.570796;
+      
+      double h_values[] = {
+          1.00000000e-10, 1.26185688e-10, 1.59228279e-10, 2.00923300e-10,
+          2.53536449e-10, 3.19926714e-10, 4.03701726e-10, 5.09413801e-10,
+          6.42807312e-10, 8.11130831e-10
+      };
+      double result = centralDifference(f, a_value, 1.00000000e-10);
+      printf("Central Difference at a = %.8lf with h = 1.00000000e-10: %.10lf\n", a_value, result);
 
 The output is 
 
-      One-Norm: 38.00
+      Central Difference at a = 1.57079600 with h = 1.00000000e-10: -1.0000000827
 
-**Implementation/Code:** The following is the code for ``code()``
+**Implementation/Code:** The following is the code for ``centralDifference()``
+
+      #ifndef CENTRAL_DIFFERENCE_H
+      #define CENTRAL_DIFFERENCE_H
+      
+      #include <stdio.h>
+      #include <math.h>
+      
+      extern double a_value;
+      
+      extern double h_values[];
+      
+      double f(double x) {
+          return 1.0 / tan(x);
+      }
+      
+      double centralDifference(double (*function)(double), double x, double h) {
+          return (function(x + h) - function(x - h)) / (2 * h);
+      }
+      
+      double f1(double x) {
+          return (sqrt(M_PI) / 2) * erf(x);
+      }
+      
+      #endif
+
 
 <a id="Linf-Norm"></a>
 
