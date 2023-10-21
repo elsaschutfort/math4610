@@ -188,7 +188,7 @@ The output is
       
       #endif
 
-<a id="l2-distance"></a>
+<a id="linf-norm"></a>
 
 **Routine Name:** Linf Norm
 
