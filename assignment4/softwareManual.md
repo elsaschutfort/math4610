@@ -673,42 +673,6 @@ The output is
       #endif
 
 
-<a id="Linf-Norm"></a>
-
-**Routine Name:** 
-
-**Author:** Elsa Schutfort 
-
-**Language:** C 
-
-The following line will produce a program **__** that can be ran. 
-
-      $ gcc -o __ __.c
-
-**Description/Purpose:** 
-
-**Input:** 
-
-**Output:** 
-
-      output code
-
-**Usage/Example:**
-
-This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
-
-    double vector[] = {1.2, -3.4, 5.6, -7.8, 9.0}; // Replace with your vector
-    int size = sizeof(vector) / sizeof(vector[0]);
-
-    double result = linfNorm(vector, size);
-    printf("L∞-Distance: %.2lf\n", result);
-
-The output is 
-
-      One-Norm: 38.00
-
-**Implementation/Code:** The following is the code for ``code()``
-
       
 
 
