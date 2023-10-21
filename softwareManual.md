@@ -84,7 +84,7 @@ The output is
       
       #endif
 
-**Routine Name:** 
+**Routine Name:** L2 Norm
 
 **Author:** Elsa Schutfort 
 
@@ -92,19 +92,18 @@ The output is
 
 The following line will produce a program **l2-norm** that can be ran. 
 
-``$ gcc -o l2-norm l2-norm.c`` 
+      $ gcc -o l2-norm l2-norm.c`
 
-**Description/Purpose:** This routine will compute the single precision float value for the machine epsilon. 
+**Description/Purpose:** This routine will compute the distance of the vector coordinate from the origin of the vector space. 
+**Input:** A vector in the form of an array must be entered to compute l2-norm.
 
-**Input:** There's no input for the program.
-
-**Output:** smaceps returns the single precision value for the machine epsilon 
+**Output:** l2-noorm calculates the distance of the vector coordinate from the origin of the vector space where the vector is the vector inputted.
 
       L2-Norm: 13.65
 
 **Usage/Example:**
 
-This funcyion doesn't take any arguements needed to be inputted and it returns the single point precision mach epsilon. This function can be used to analyze the behavior of a computer, and typically only needs to be ran once on a computer.
+This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
 
     double vector[] = {1.2, -3.4, 5.6, -7.8, 9.0}; // Replace with your vector
     int size = sizeof(vector) / sizeof(vector[0]);
@@ -116,7 +115,8 @@ The output is
 
       L2-Norm: 13.65
 
-**Implementation/Code:** The following is the code for l2Norm()
+**Implementation/Code:** The following is the code for ``l2Norm()``
+
       ifndef L2_NORM_H
       #define L2_NORM_H
       
