@@ -304,43 +304,65 @@ The output is
 
       #endif
       
-<a id="Linf-Norm"></a>
+<a id="l1-distance"></a>
 
-**Routine Name:** 
+**Routine Name:** l1 Distance
 
 **Author:** Elsa Schutfort 
 
 **Language:** C 
 
-The following line will produce a program **__** that can be ran. 
+The following line will produce a program **l1-distance** that can be ran. 
 
-      $ gcc -o __ __.c
+      $ gcc -o l1_distance l1-distance.c
 
-**Description/Purpose:** 
+**Description/Purpose:** This routine computes the sum of the absolute vector values.
 
-**Input:** 
+**Input:** The routine inputs two vectors of the same size in the form of arrays.
 
-**Output:** 
+**Output:** The routine outputs the sum of the absolute vector values.
 
-      output code
+      L1-Distance: 6.00
 
 **Usage/Example:**
 
-This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
+This function takes in the vector in the form of two arrays as input and returns the l1 distance of the inputted vectors.
 
-    double vector[] = {1.2, -3.4, 5.6, -7.8, 9.0}; // Replace with your vector
-    int size = sizeof(vector) / sizeof(vector[0]);
+    double vector1[] = {3.0, 4.0, 10.0};
+    double vector2[] = {5.0, 6.0, 12.0};
+    int size = sizeof(vector1) / sizeof(vector1[0]);
 
-    double result = linfNorm(vector, size);
-    printf("L∞-Distance: %.2lf\n", result);
-
+    double result = l1Distance(vector1, vector2, size);
+    printf("L1-Distance: %.2lf\n", result);
+    
 The output is 
 
-      One-Norm: 38.00
+      L1-Distance: 6.00
 
-**Implementation/Code:** The following is the code for ``code()``
+**Implementation/Code:** The following is the code for ``l1Distance()``
 
+      #ifndef L1_DISTANCE_H
+      #define L1_DISTANCE_H
       
+      #include <stdio.h>
+      #include <math.h>
+      
+      double l1Distance(double *vector1, double *vector2, int size) {
+          double sum = 0.0;
+      
+          if (size <= 0) {
+              return sum; // Return 0 for empty vectors or size mismatch
+          }
+      
+          for (int i = 0; i < size; i++) {
+              double diff = vector2[i] - vector1[i];
+              sum += fabs(diff);
+          }
+      
+          return sum;
+      }
+      
+      #endif
 
 <a id="Linf-Norm"></a>
 
