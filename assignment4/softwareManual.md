@@ -572,6 +572,84 @@ The output is
       #endif
             
 
+<a id="back-difference"></a>
+
+**Routine Name:** Backward Difference
+
+**Author:** Elsa Schutfort 
+
+**Language:** C 
+
+The following line will produce a program **back-difference** that can be ran. 
+
+      $ gcc -o back-difference back-difference.c
+
+**Description/Purpose:** This routines purpose is to compute the basic derivative approximation using backward substituion.
+
+**Input:** The routine inputs a function, x value, and h value.
+
+**Output:** The routine outputs a approximation for the derivative for the x value on the function.
+
+      Derivative at x = 1.0 is approximately 3.0000002482
+
+**Usage/Example:**
+
+      double f(double x) {
+          return x * x * x;
+      }
+      double x_value = 1.0;
+      double h = 1e-10;
+      
+      double derivative = backwardDifference(f, x_value, h);
+      
+      printf("Derivative at x = %.1lf is approximately %.10lf\n",        x_value, derivative);
+
+The output is 
+
+      Derivative at x = 1.0 is approximately 3.0000002482
+
+**Implementation/Code:** The following is the code for ``backwardDifference()``
+
+      double backwardDifference(double (*function)(double), double x, double h) {
+          return (function(x) - function(x - h)) / h;
+      }
+
+<a id="Linf-Norm"></a>
+
+**Routine Name:** 
+
+**Author:** Elsa Schutfort 
+
+**Language:** C 
+
+The following line will produce a program **__** that can be ran. 
+
+      $ gcc -o __ __.c
+
+**Description/Purpose:** 
+
+**Input:** 
+
+**Output:** 
+
+      output code
+
+**Usage/Example:**
+
+This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
+
+    double vector[] = {1.2, -3.4, 5.6, -7.8, 9.0}; // Replace with your vector
+    int size = sizeof(vector) / sizeof(vector[0]);
+
+    double result = linfNorm(vector, size);
+    printf("L∞-Distance: %.2lf\n", result);
+
+The output is 
+
+      One-Norm: 38.00
+
+**Implementation/Code:** The following is the code for ``code()``
+
 <a id="Linf-Norm"></a>
 
 **Routine Name:** 
