@@ -188,7 +188,7 @@ The output is
       
       #endif
 
-<a id="Linf-Norm"></a>
+<a id="l2-distance"></a>
 
 **Routine Name:** Linf Norm
 
@@ -243,4 +243,255 @@ The output is
       }
       
       #endif
+
+<a id="l2-distance"></a>
+
+**Routine Name:** L2 Distance
+
+**Author:** Elsa Schutfort 
+
+**Language:** C 
+
+The following line will produce a program **L2 Distance** that can be ran. 
+
+      $ gcc -o l2Distance l2-distance.c
+
+**Description/Purpose:** Computes the length of a line segment between the two points
+
+**Input:** The routine inputs two vectors with the same length.
+
+**Output:** The routine outputs the sum of the distance between two vectors squared.
+
+      L2-Distance: 3.46
+
+**Usage/Example:**
+
+This function takes in the vector in the form of an array as input and returns the l2 distance of the inputted vector.
+
+    double vector1[] = {3.0, 4.0, 10.0};
+    double vector2[] = {5.0, 6.0, 12.0};
+    int size = sizeof(vector1) / sizeof(vector1[0]);
+
+    double result = l2Distance(vector1, vector2, size);
+    printf("L2-Distance: %.2lf\n", result);
+
+The output is 
+
+      L2-Distance: 3.46
+
+**Implementation/Code:** The following is the code for ``l2Distance()``
+
+      #ifndef L2_DISTANCE_H
+      #define L2_DISTANCE_H
+      
+      #include <stdio.h>
+      #include <math.h>
+      
+      double l2Distance(double *vector1, double *vector2, int size) {
+          double sum = 0.0;
+      
+          if (size <= 0) {
+              return sum; // Return 0 for empty vectors or size mismatch
+          }
+      
+          for (int i = 0; i < size; i++) {
+              double diff = vector2[i] - vector1[i];
+              sum += pow(fabs(diff), 2);
+          }
+      
+          return sqrt(sum);
+      }
+
+      #endif
+      
+<a id="Linf-Norm"></a>
+
+**Routine Name:** 
+
+**Author:** Elsa Schutfort 
+
+**Language:** C 
+
+The following line will produce a program **__** that can be ran. 
+
+      $ gcc -o __ __.c
+
+**Description/Purpose:** 
+
+**Input:** 
+
+**Output:** 
+
+      output code
+
+**Usage/Example:**
+
+This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
+
+    double vector[] = {1.2, -3.4, 5.6, -7.8, 9.0}; // Replace with your vector
+    int size = sizeof(vector) / sizeof(vector[0]);
+
+    double result = linfNorm(vector, size);
+    printf("L∞-Distance: %.2lf\n", result);
+
+The output is 
+
+      One-Norm: 38.00
+
+**Implementation/Code:** The following is the code for ``code()``
+
+      
+
+<a id="Linf-Norm"></a>
+
+**Routine Name:** 
+
+**Author:** Elsa Schutfort 
+
+**Language:** C 
+
+The following line will produce a program **__** that can be ran. 
+
+      $ gcc -o __ __.c
+
+**Description/Purpose:** 
+
+**Input:** 
+
+**Output:** 
+
+      output code
+
+**Usage/Example:**
+
+This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
+
+    double vector[] = {1.2, -3.4, 5.6, -7.8, 9.0}; // Replace with your vector
+    int size = sizeof(vector) / sizeof(vector[0]);
+
+    double result = linfNorm(vector, size);
+    printf("L∞-Distance: %.2lf\n", result);
+
+The output is 
+
+      One-Norm: 38.00
+
+**Implementation/Code:** The following is the code for ``code()``
+
+      
+
+<a id="Linf-Norm"></a>
+
+**Routine Name:** 
+
+**Author:** Elsa Schutfort 
+
+**Language:** C 
+
+The following line will produce a program **__** that can be ran. 
+
+      $ gcc -o __ __.c
+
+**Description/Purpose:** 
+
+**Input:** 
+
+**Output:** 
+
+      output code
+
+**Usage/Example:**
+
+This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
+
+    double vector[] = {1.2, -3.4, 5.6, -7.8, 9.0}; // Replace with your vector
+    int size = sizeof(vector) / sizeof(vector[0]);
+
+    double result = linfNorm(vector, size);
+    printf("L∞-Distance: %.2lf\n", result);
+
+The output is 
+
+      One-Norm: 38.00
+
+**Implementation/Code:** The following is the code for ``code()``
+
+      
+
+<a id="Linf-Norm"></a>
+
+**Routine Name:** 
+
+**Author:** Elsa Schutfort 
+
+**Language:** C 
+
+The following line will produce a program **__** that can be ran. 
+
+      $ gcc -o __ __.c
+
+**Description/Purpose:** 
+
+**Input:** 
+
+**Output:** 
+
+      output code
+
+**Usage/Example:**
+
+This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
+
+    double vector[] = {1.2, -3.4, 5.6, -7.8, 9.0}; // Replace with your vector
+    int size = sizeof(vector) / sizeof(vector[0]);
+
+    double result = linfNorm(vector, size);
+    printf("L∞-Distance: %.2lf\n", result);
+
+The output is 
+
+      One-Norm: 38.00
+
+**Implementation/Code:** The following is the code for ``code()``
+
+      
+
+<a id="Linf-Norm"></a>
+
+**Routine Name:** 
+
+**Author:** Elsa Schutfort 
+
+**Language:** C 
+
+The following line will produce a program **__** that can be ran. 
+
+      $ gcc -o __ __.c
+
+**Description/Purpose:** 
+
+**Input:** 
+
+**Output:** 
+
+      output code
+
+**Usage/Example:**
+
+This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
+
+    double vector[] = {1.2, -3.4, 5.6, -7.8, 9.0}; // Replace with your vector
+    int size = sizeof(vector) / sizeof(vector[0]);
+
+    double result = linfNorm(vector, size);
+    printf("L∞-Distance: %.2lf\n", result);
+
+The output is 
+
+      One-Norm: 38.00
+
+**Implementation/Code:** The following is the code for ``code()``
+
+      
+
 
