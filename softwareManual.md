@@ -131,3 +131,53 @@ The output is
       }
       
       #endif
+
+**Routine Name:** L1 Norm
+
+**Author:** Elsa Schutfort 
+
+**Language:** C 
+
+The following line will produce a program **l1_norm** that can be ran. 
+
+      $ gcc -o l1_norm l1-norm.c`
+
+**Description/Purpose:** This routine will compute the distance of the vector coordinate from the origin of the vector space. 
+**Input:** A vector in the form of an array must be entered to compute l2-norm.
+
+**Output:** l2-noorm calculates the distance of the vector coordinate from the origin of the vector space where the vector is the vector inputted.
+
+      One-Norm: 38.00
+
+**Usage/Example:**
+
+This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
+
+    double vector[] = {1.2, -3.4, 5.6, -7.8, 20.0}; // Replace with your vector
+    int size = sizeof(vector) / sizeof(vector[0]);
+
+    double result = oneNorm(vector, size);
+    printf("One-Norm: %.2lf\n", result);
+
+The output is 
+
+      One-Norm: 38.00
+
+**Implementation/Code:** The following is the code for ``oneNorm()``
+
+      ifndef ONE_NORM_H
+      #define ONE_NORM_H
+      
+      #include <stdio.h>
+      #include <stdlib.h>
+      #include <math.h>
+      
+      double oneNorm(double *vector, int size) {
+          double sum = 0.0;
+          for (int i = 0; i < size; i++) {
+              sum += fabs(vector[i]);
+          }
+          return sum;
+      }
+      
+      #endif
