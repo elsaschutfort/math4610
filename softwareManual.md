@@ -1,5 +1,7 @@
 # MATH-4610 Software Manual
 ---
+<a id="smaceps"></a>
+
 **Routine Name:** smaceps <br>
 **Author:** Elsa Schutfort <br>
 **Language:** C <br>
@@ -37,7 +39,8 @@ The output is
       }
 
       #endif
-
+      
+<a id="dmaceps"></a>
 **Routine Name:** dmaceps
 
 **Author:** Elsa Schutfort
@@ -83,7 +86,8 @@ The output is
       }
       
       #endif
-
+      
+<a id="L2-Norm"></a>
 **Routine Name:** L2 Norm
 
 **Author:** Elsa Schutfort 
@@ -131,6 +135,8 @@ The output is
       }
       
       #endif
+
+<a id="l1-Norm"></a>
 
 **Routine Name:** L1 Norm
 
@@ -181,6 +187,8 @@ The output is
       }
       
       #endif
+
+<a id="Linf-Norm"></a>
 
 **Routine Name:** Linf Norm
 
