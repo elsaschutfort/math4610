@@ -181,3 +181,58 @@ The output is
       }
       
       #endif
+
+**Routine Name:** Linf Norm
+
+**Author:** Elsa Schutfort 
+
+**Language:** C 
+
+The following line will produce a program **linf_norm** that can be ran. 
+
+      $ gcc -o linfNorm linf-norm.c`
+
+**Description/Purpose:** This routine will compute the distance of the vector coordinate from the origin of the vector space. 
+**Input:** A vector in the form of an array must be entered to compute l2-norm.
+
+**Output:** linf-norm calculates the distance of the vector coordinate from the origin of the vector space where the vector is the vector inputted.
+
+      One-Norm: 38.00
+
+**Usage/Example:**
+
+This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
+
+    double vector[] = {1.2, -3.4, 5.6, -7.8, 9.0}; // Replace with your vector
+    int size = sizeof(vector) / sizeof(vector[0]);
+
+    double result = linfNorm(vector, size);
+    printf("L∞-Distance: %.2lf\n", result);
+
+The output is 
+
+      One-Norm: 38.00
+
+**Implementation/Code:** The following is the code for ``oneNorm()``
+
+      #ifndef LINF_NORM_H
+      #define LINF_NORM_H
+      
+      #include <stdio.h>
+      #include <math.h>
+      
+      double linfNorm(double *vector, int size) {
+          double max = fabs(vector[0]);
+      
+          for (int i = 1; i < size; i++) {
+              double absValue = fabs(vector[i]);
+              if (absValue > max) {
+                  max = absValue;
+              }
+          }
+      
+          return max;
+      }
+      
+      #endif
+
