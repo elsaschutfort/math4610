@@ -496,43 +496,81 @@ This function takes in the vector in the form of an array as input and returns t
       }
 
 
-<a id="Linf-Norm"></a>
+<a id="forward-difference"></a>
 
-**Routine Name:** 
+**Routine Name:** Forward Difference
 
 **Author:** Elsa Schutfort 
 
 **Language:** C 
 
-The following line will produce a program **__** that can be ran. 
+The following line will produce a program **forward-difference** that can be ran. 
 
-      $ gcc -o __ __.c
+      $ gcc -o forward-difference forward-difference.c
 
-**Description/Purpose:** 
+**Description/Purpose:** The purpose of this routine is to compute the basic derivative approximatiion using a forward differnce.
 
-**Input:** 
+**Input:** The routine inputs an x value, an h value, and a function.
 
-**Output:** 
+**Output:** The routine outputs a basic derivative approximation for the x value in the function using the h value.
 
-      output code
+      h = 1.0000000000e-10: 2.2222224061e-01
+      h = 1.2618568800e-10: 2.2222244024e-01
+      h = 1.5922827900e-10: 2.2222236385e-01
+      h = 2.0092330000e-10: 2.2222219791e-01
+      h = 2.5353644900e-10: 2.2222221595e-01
+      h = 3.1992671400e-10: 2.2222230629e-01
+      h = 4.0370172600e-10: 2.2222213755e-01
+      h = 5.0941380100e-10: 2.2222231382e-01
+      h = 6.4280731200e-10: 2.2222222063e-01
+      h = 8.1113083100e-10: 2.2222224453e-01
 
 **Usage/Example:**
 
-This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
+      double x_value = 2.0;
 
-    double vector[] = {1.2, -3.4, 5.6, -7.8, 9.0}; // Replace with your vector
-    int size = sizeof(vector) / sizeof(vector[0]);
-
-    double result = linfNorm(vector, size);
-    printf("L∞-Distance: %.2lf\n", result);
-
+      for (int i = 0; i < num_h_values; i++) {
+            double result = forwardDifference(x_value, h_values[i], func);
+            printf("h = %.10e: %.10e\n", h_values[i], result);
+      }
 The output is 
 
-      One-Norm: 38.00
+      h = 1.0000000000e-10: 2.2222224061e-01
+      h = 1.2618568800e-10: 2.2222244024e-01
+      h = 1.5922827900e-10: 2.2222236385e-01
+      h = 2.0092330000e-10: 2.2222219791e-01
+      h = 2.5353644900e-10: 2.2222221595e-01
+      h = 3.1992671400e-10: 2.2222230629e-01
+      h = 4.0370172600e-10: 2.2222213755e-01
+      h = 5.0941380100e-10: 2.2222231382e-01
+      h = 6.4280731200e-10: 2.2222222063e-01
+      h = 8.1113083100e-10: 2.2222224453e-01
 
-**Implementation/Code:** The following is the code for ``code()``
+**Implementation/Code:** The following is the code for ``forwardDifference()``
 
+      #ifndef FORWARD_DIFFERENCE_H
+      #define FORWARD_DIFFERENCE_H
       
+      #include <stdio.h>
+      
+      double func(double x) {
+          return (x - 1.0) / (x + 1.0);
+      }
+      
+      double forwardDifference(double a, double h, double (*function)(double)) {
+          return (function(a + h) - function(a)) / h;
+      }
+      
+      double h_values[] = {
+          1.00000000e-10, 1.26185688e-10, 1.59228279e-10, 2.00923300e-10,
+          2.53536449e-10, 3.19926714e-10, 4.03701726e-10, 5.09413801e-10,
+          6.42807312e-10, 8.11130831e-10
+      };
+      
+      int num_h_values = sizeof(h_values) / sizeof(h_values[0]);
+      
+      #endif
+            
 
 <a id="Linf-Norm"></a>
 
