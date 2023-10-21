@@ -426,9 +426,9 @@ The output is
       
       #endif
 
-<a id="Linf-Norm"></a>
+<a id="linreg"></a>
 
-**Routine Name:** 
+**Routine Name:** Linear Regression
 
 **Author:** Elsa Schutfort 
 
@@ -436,33 +436,65 @@ The output is
 
 The following line will produce a program **__** that can be ran. 
 
-      $ gcc -o __ __.c
+      $ gcc -o linreg linreg.c
 
-**Description/Purpose:** 
+**Description/Purpose:** This routine computes the linear least square of two vectors that are inputted.
 
-**Input:** 
+**Input:** The routine requires two vectors of the same size to be inputted.
 
-**Output:** 
+**Output:** The routine outputs the linear least square which is dependent on the size and value of the vectors inputted.
 
-      output code
+      Enter the number of data points: 4
+      Enter the data points as pairs of x and y values:
+      Point 1: 2 5
+      Point 2: 3 6
+      Point 3: 4 7
+      Point 4: 5 8
+      Linear Least Squares Fit:
+      Slope (m): 1.0000
+      Intercept (b): 3.0000
 
 **Usage/Example:**
 
 This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
 
-    double vector[] = {1.2, -3.4, 5.6, -7.8, 9.0}; // Replace with your vector
-    int size = sizeof(vector) / sizeof(vector[0]);
+    int n;
+    printf("Enter the number of data points: ");
+    scanf("%d", &n);
 
-    double result = linfNorm(vector, size);
-    printf("L∞-Distance: %.2lf\n", result);
+    double x[n], y[n];
 
-The output is 
+    printf("Enter the data points as pairs of x and y values:\n");
+    for (int i = 0; i < n; i++) {
+        printf("Point %d: ", i + 1);
+        scanf("%lf %lf", &x[i], &y[i]);
+    }
 
-      One-Norm: 38.00
+    double slope, intercept;
+    linearLeastSquares(x, y, n, &slope, &intercept);
 
-**Implementation/Code:** The following is the code for ``code()``
+    printf("Linear Least Squares Fit:\n");
+    printf("Slope (m): %.4f\n", slope);
+    printf("Intercept (b): %.4f\n", intercept);
 
+
+**Implementation/Code:** The following is the code for ``linearLeastSquares()``
       
+      void linearLeastSquares(double x[], double y[], int n, double *slope, double *intercept) {
+          double sum_x = 0.0, sum_y = 0.0, sum_xy = 0.0, sum_x2 = 0.0;
+      
+          for (int i = 0; i < n; i++) {
+              sum_x += x[i];
+              sum_y += y[i];
+              sum_xy += x[i] * y[i];
+              sum_x2 += x[i] * x[i];
+          }
+      
+          // Calculate the slope (m) and intercept (b)
+          *slope = (n * sum_xy - sum_x * sum_y) / (n * sum_x2 - sum_x * sum_x);
+          *intercept = (sum_y - (*slope) * sum_x) / n;
+      }
+
 
 <a id="Linf-Norm"></a>
 
