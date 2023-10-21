@@ -386,8 +386,6 @@ The following line will produce a program **linf-distance** that can be ran.
 
 **Usage/Example:**
 
-This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
-
     double vector1[] = {3.0, 4.0, 10.0};
     double vector2[] = {5.0, 6.0, 15.0};
     int size = sizeof(vector1) / sizeof(vector1[0]);
@@ -455,8 +453,6 @@ The following line will produce a program **__** that can be ran.
       Intercept (b): 3.0000
 
 **Usage/Example:**
-
-This function takes in the vector in the form of an array as input and returns the l2 norm of the inputted vector.
 
     int n;
     printf("Enter the number of data points: ");
