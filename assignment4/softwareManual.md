@@ -815,3 +815,54 @@ def backsub(mat):
     print("\nSolution for the system:")
     for i in range(N):
         print("{:.8f}".format(x[i]))
+
+
+**Routine Name:** Matrix Vector Multiplier
+
+**Author:** Elsa Schutfort
+
+**Language:** Python
+
+**Description/Purpose:** The purpose of this routine is to determine the dot product of two vectors.
+
+**Input:** Inputs a matrix and a vector.
+
+**Output:** Outputs the dot product of the inputted matrix and vector.
+
+**Usage/Example:** 
+
+      A = [
+      [1,2],
+      [3,4]
+      ]
+      x = [2,3]
+
+      Ax = 8 18
+
+**Implementation/Code:**
+
+class MatrixVectorMultiplier:
+    def __init__(self, n=None):
+        self.n = n
+
+    def multiply(self, A, y):
+        if self.n is not None:
+            if len(A) != self.n or any(len(row) != self.n for row in A):
+                raise ValueError("Matrix A must be of size n x n.")
+            if len(y) != self.n:
+                raise ValueError("Vector y must have length n.")
+        else:
+            self.n = len(A)
+
+        if len(A[0]) != len(y):
+            raise ValueError("Matrix A and vector y dimensions are not compatible for multiplication.")
+
+        b = [0] * self.n
+
+        for i in range(self.n):
+            for j in range(self.n):
+                b[i] += A[i][j] * y[j]
+
+        return b
+
+        
