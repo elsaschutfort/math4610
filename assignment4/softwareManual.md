@@ -672,6 +672,8 @@ The output is
       
       #endif
 
+<a id="back-substitution"></a>
+
 **Routine Name:** Back Substitution
 
 **Author:** Elsa Schutfort
@@ -702,6 +704,7 @@ The output is
             X[i] = 0
     return X
 
+<a id="forward-substitution"></a>
 
 **Routine Name:** Forward Substituion 
 
@@ -731,6 +734,7 @@ The output is
     
     return x
 
+<a id="guassian-elimination"></a>
 
 **Routine Name:** Guassian Elimination
 
@@ -816,6 +820,7 @@ def backsub(mat):
     for i in range(N):
         print("{:.8f}".format(x[i]))
 
+<a id="matrix-vector"></a>
 
 **Routine Name:** Matrix Vector Multiplier
 
@@ -865,6 +870,7 @@ class MatrixVectorMultiplier:
 
         return b
 
+<a id="LU-factorization"></a>
 
 **Routine Name:** LU factorization
 
@@ -899,6 +905,8 @@ class MatrixVectorMultiplier:
     return L,U
 ``
 
+<a id="fixed-point"></a>
+
 **Routine Name:** Fixed Point Iteration
 
 **Author:** Elsa Schutfort
@@ -930,6 +938,7 @@ class MatrixVectorMultiplier:
         return x0
     print("An error occurred")
 
+<a id="bisection"></a>
 
 **Routine Name:** Bisection Method
 
@@ -970,6 +979,7 @@ class MatrixVectorMultiplier:
         return c
     return 
 
+<a id="secant"></a>
 
 **Routine Name:** Secant Method
 
@@ -1004,6 +1014,8 @@ class MatrixVectorMultiplier:
         condition = abs(f(x2)) > error
     return x2
 
+<a id="hybrid"></a>
+
 **Routine Name:** Hybrid Method
 
 **Author:** Elsa Schutfort
@@ -1023,6 +1035,8 @@ class MatrixVectorMultiplier:
     if rootApprox is not None:
         rootApprox = secant(x0, x1)
     return rootApprox
+
+<a id="power-method"></a>
 
 **Routine Name:** Power Method
 
@@ -1054,6 +1068,8 @@ class MatrixVectorMultiplier:
         else:
             error = v1
     return eigenvalue
+
+<a id="inverse-power-method"></a>
 
 **Routine Name:**  Inverse Power Method
 
@@ -1088,6 +1104,8 @@ class MatrixVectorMultiplier:
     
     eigenvalue = dot(v_new, Av)
     return eigenvalue
+    
+<a id="shifted-inverse-power-method"></a>
 
 **Routine Name:** Shifted Inverse Power Method
 
@@ -1120,6 +1138,8 @@ class MatrixVectorMultiplier:
             break
     
     return s
+    
+<a id="power-method-partitions"></a>
 
 **Routine Name:** Power Method with Partitions
 
@@ -1155,6 +1175,8 @@ class MatrixVectorMultiplier:
         results.append((eigenvalue, eigenvector))
 
     return results
+    
+<a id="jacobi"></a>
 
 **Routine Name:** Jacobi Iteration
 
@@ -1185,6 +1207,8 @@ class MatrixVectorMultiplier:
         k += 1
         x0 = x.copy()
     return x
+    
+<a id="guass-siedel"></a>
 
 **Routine Name:** Guass-Siedel
 
