@@ -898,3 +898,319 @@ class MatrixVectorMultiplier:
                 U[j][k] -= factor * U[i][k]
     return L,U
 ``
+
+**Routine Name:** Fixed Point Iteration
+
+**Author:** Elsa Schutfort
+
+**Language:** Python
+
+**Description/Purpose:** This routine approximates the root of a single-variable function.
+
+**Input:** A guess for the fixed point, the function in which the fixed point is sought, the derivative of the function, a function that adds x to the function in which the fixed point is sought, and the tolerance.
+
+**Output:** The estimated fixed point
+
+**Usage/Example:** To use a fixed point, the user must define a function and choose an initial guess.
+
+**Implementation/Code:** 
+
+``def fixedpoint(x0, g, gPrime, f, tol):``
+    if gPrime(x0) > 1:
+        return
+    
+    max = 5
+    i = 0
+    if gPrime(x0) < 1:
+        while f(x0) > tol or max > i:
+            temp = x0
+            x0 = g(temp)
+            print("x = " + str(x0) + " g(x) = " + str(g(x0)))
+            i += 1
+        return x0
+    print("An error occurred")
+
+
+**Routine Name:** Bisection Method
+
+**Author:** Elsa Schutfort
+
+**Language:** Python
+
+**Description/Purpose:** This routine approximates the root of a given equation by repeatedly dividing an interval.
+
+**Input:** The start of the interval, the end of the interval, and the function.
+
+**Output:** An approximation of a root of the given function.
+
+**Usage/Example:** Input an interval and a function.
+
+**Implementation/Code:**
+
+``def bisection(a, b, f, tol=0.0001):``
+    max = 20
+    i = 0
+    error = 10 * tol
+    fa = f(a)
+    fb = f(b)
+    if (fa < 0 and fb > 0):
+
+        while error > tol and i < max:
+            c = (a + b) / 2
+            fc = f(c)
+            if (fa * fb) < 0:
+                b = c
+                fb = fc
+            else:
+                a = c
+                fa = fc
+            error = b - a
+            i += 1
+
+        return c
+    return 
+
+
+**Routine Name:** Secant Method
+
+**Author:** Elsa Schutfort
+
+**Language:** Python
+
+**Description/Purpose:** The purpose of the routine is to approximate a root of a function.
+
+**Input:** An interval where the real root of the equation lies and the equation.
+
+**Output:** An approximate root of the equation.
+
+**Usage/Example:** Input a start and end of an interval where a root of the equation lies and the equation.
+
+**Implementation/Code:** 
+
+``def secant(x0, x1, error=0.0001, n=100):``
+    s = 1
+    condition = True
+    while condition:
+        if f(x0) == f(x1):
+            break
+        x2 = x0 - (x1 - x0) * f(x0) / (f(x1) - f(x0))
+        x0 = x1
+        x1 = x2
+        s += 1
+
+        if s > n:
+            break
+
+        condition = abs(f(x2)) > error
+    return x2
+
+**Routine Name:** Hybrid Method
+
+**Author:** Elsa Schutfort
+
+**Language:** Python
+
+**Description/Purpose:** Uses the bisection method to narrow down the location of the root and then uses the secant method to narrow down the root location at a faster rate.
+
+**Input:** Input the function along with the intervals for both the Bisection Method and the Secant Method.
+
+**Output:** An approximate root of the function.
+
+**Implementation/Code:** 
+
+``def hybrid(a, b, x0, x1, f):``
+    rootApprox = bisection(a, b, f)
+    if rootApprox is not None:
+        rootApprox = secant(x0, x1)
+    return rootApprox
+
+**Routine Name:** Power Method
+
+**Author:** Elsa Schutfort
+
+**Language:** Python
+
+**Description/Purpose:** The routine uses the power method to compute the largest eigenvalue of a square matrix.
+
+**Input:** A matrix and a guess of the largest eigenvector.
+
+**Output:** The largest eigenvalue of the inputted matrix.
+
+**Usage/Example:** Input a matrix and a guess of the largest eigenvector.
+
+**Implementation/Usage:** 
+
+``def power(A, v, maxiter=50, tol=.00006):``
+    v1 = norm(v)
+    error = v1
+    for i in range(maxiter):
+        Av = [dot(row, v1) for row in A]
+        eigenvalue = dot(v1, Av)
+        print(eigenvalue)
+        v1 = norm(Av)
+        error -= v1
+        if error < tol:
+            break
+        else:
+            error = v1
+    return eigenvalue
+
+**Routine Name:**  Inverse Power Method
+
+**Author:** Elsa Schutfort
+
+**Language:** Python
+
+**Description/Purpose:** The routine uses the power method to compute the smallest eigenvalue of a square matrix.
+
+**Input:** A matrix and an approximate smallest eigenvector.
+
+**Output:** An approximation of the smallest eigenvalue.
+
+**Implementation/Code:**
+
+``def inversePowerMethod(A, v0, maxiter=10, tol=0.001):``
+    size = len(A)
+    L, U = lu_factorization(A)
+
+    for k in range(maxiter):
+        y = solve(L, v0)
+        x = solve(U, y)
+
+        v_new = [xi / norm(x) for xi in x]
+        Av = [dot(row, v_new) for row in A]
+        error = sum((x1 - x2) ** 2 for x1, x2 in zip(v_new, v0))
+
+        if error < tol:
+            break
+
+        v0 = v_new
+    
+    eigenvalue = dot(v_new, Av)
+    return eigenvalue
+
+**Routine Name:** Shifted Inverse Power Method
+
+**Author:** Elsa Schutfort
+
+**Language:** Python
+
+**Description/Purpose:** Computes the eigenvalues between the smallest and largest eigenvalues of a matrix.
+
+**Input:** A matrix and a guess of a eigenvector
+
+**Output:** An eigenvalue between the smallest and largest eigenvalue
+
+**Implementation/Code:**
+
+``def shiftedInverse(A, v0, s, tol, maxiter):``
+    size = len(A)
+
+    for i in range(maxiter):
+        id_matrix = I(size, s)
+        As = subtract(A, id_matrix)
+        y = solve(As, v0)
+        x = solve(As, y)
+        last = norm(v0)
+        v0 = x
+        normV = norm(v0)
+        s = rayleigh(As, v0)
+        error = normV - last
+        if error < tol:
+            break
+    
+    return s
+
+**Routine Name:** Power Method with Partitions
+
+**Author:** Elsa Schutfort
+
+**Language:** Python
+
+**Description/Purpose:** Uses partitions of an interval defined by the smallest and largest eigenvalues of a matrix, then uses the power method to compute the location of the next eigenvalue.
+
+**Input:** A matrix, a guess of an eigenvector, and the number of partitions.
+
+**Output:** The eigenvalues found
+
+**Implementation/Code:**
+
+``def partition_and_power(A, v0, num_partitions, maxiter, tol):``
+    smallest_eigenvalue = inversePowerMethod(A,v0)
+
+    largest_eigenvalue = power(A,v0)
+
+    intervals = np.linspace(smallest_eigenvalue, largest_eigenvalue, num_partitions + 1)
+
+    results = []
+    for i in range(num_partitions):
+        interval_start = intervals[i]
+        interval_end = intervals[i + 1]
+
+        adjusted_A = A - np.identity(A.shape[0]) * interval_start
+        eigenvalue, eigenvector = power(adjusted_A, v0, maxiter, tol)
+
+        eigenvalue += interval_start
+
+        results.append((eigenvalue, eigenvector))
+
+    return results
+
+**Routine Name:** Jacobi Iteration
+
+**Author:** Elsa Schutfort 
+
+**Language:** Python
+
+**Description/Purpose:** Computes the approximate solutions for linear systems.
+
+**Input:** A matrix, a corresponding right-hand side vector, and a guess of the solution. 
+
+**Output:** An approximate solution to the linear systems.
+
+**Implementation/Code:**
+
+``def jacobi(A, b, x0, tol=0.0001, N=100):``
+    k = 1
+    x = x0.copy()
+    n = len(A)
+    while k <= N:
+        for i in range(n):
+            sum1 = sum(-A[i][j] * x0[j] for j in range(n) if j != i)
+            sum2 = sum1 + b[i]
+            x[i] = (1 / A[i][i]) * sum2
+        if vector_norm([x[i] - x0[i] for i in range(n)]) < tol:
+            return x
+
+        k += 1
+        x0 = x.copy()
+    return x
+
+**Routine Name:** Guass-Siedel
+
+**Author:** Elsa Schutfort
+
+**Language:** Python
+
+**Description/Purpose:** Computes an approximation for linear systems of equations.
+
+**Input:** A matrix, a corresponding right-hand side vector, and a guess of the solution. 
+
+**Output:** An approximate solution to the linear systems.
+
+**Implementation/Code:** 
+
+``def gaussSeidel(A, x0, b, N=100, tol=0.0001):``
+    n = len(A)
+    k = 1
+    x = [0 for x in x0]
+    while k <= N:
+        for i in range(n):
+            sum1 = sum(A[i][j] * x[j] for j in range(i))
+            sum2 = sum(A[i][j] * x0[j] for j in range(i + 1, n))
+            x[i] = (1 / A[i][i]) * (-sum1 - sum2 + b[i])
+        if norm([x[i] - x0[i] for i in range(n)]) < tol:
+            return x
+        k += 1
+        x0 = x.copy()
+    return x
