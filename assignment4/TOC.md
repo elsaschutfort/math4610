@@ -23,3 +23,34 @@
 11. [Backward Difference](softwareManual.md#back-difference)
 
 12. [Central Difference](softwareManual.md#central-difference)
+
+13. [Back Substitution](softwareManual.md#back-substitution)
+    
+14. [Forward Substituion](softwareManual.md#forward-substitution)
+
+15. [Guassian Elimination](softwareManual.md#guassian-elimination)
+
+16. [Matrix Vector Multiplier](softwareManual.md#matrix-vector)
+
+17. [LU factorization](softwareManual.md#LU-factorization)
+
+18. [Fixed Point Iteration](softwareManual.md#fixed-point)
+
+19. [Bisection Method](softwareManual.md#bisection)
+
+20. [Secant Method](softwareManual.md#secant)
+
+21. [Hybrid Method](softwareManual.md#hybrid)
+
+22. [Power Method](softwareManual.md#power-method)
+
+23. [Inverse Power Method](softwareManual.md#inverse-power-method)
+
+24. [Shifted Inverse Power Method](softwareManual.md#shifted-inverse-power-method)
+
+25. [Power Method with Partitions](softwareManual.md#power-method-partitions)
+
+26. [Jacobi Iteration](softwareManual.md#jacobi)
+
+27. [Guass-Siedel](softwareManual.md#guass-siedel)
+
