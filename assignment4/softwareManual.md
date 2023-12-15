@@ -865,4 +865,36 @@ class MatrixVectorMultiplier:
 
         return b
 
-        
+
+**Routine Name:** LU factorization
+
+**Author:** Elsa Schutfort
+
+**Language:** Python
+
+**Description/Purpose:** This routine computes the lower triangular and upper triangular matrices of a square matrix.
+
+**Input:** Inputs a matrix
+
+**Output:** The lower triangular and lower triangular matrices of the matrix inputted.
+
+**Usage/Example:** Input a matrix.
+
+**Implementation/Code:**
+
+``def lu(A):
+    n = len(A)
+    U = [row[:] for row in A]
+    L = [[0] * n for _ in range(n)]
+
+
+    for i in range(n):
+        L[i][i] = 1.0 
+
+        for j in range(i + 1, n):
+            factor = U[j][i] / U[i][i]
+            L[j][i] = factor
+            for k in range(i, n):
+                U[j][k] -= factor * U[i][k]
+    return L,U
+``
