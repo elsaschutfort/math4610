@@ -688,6 +688,7 @@ The output is
 
 **Implemention/Code:** 
 
+
 def backsub(N, Y, U):
     X = [0 for x in range(N)]
 
@@ -702,5 +703,30 @@ def backsub(N, Y, U):
     return X
 
 
+**Routine Name:** Forward Substituion 
+
+**Author:** Elsa Schutfort
+
+**Language:** Python
+
+**Description/Purpose:** The purpose of the routine is to solve a system of equations with a lower triangular matrix.
+
+**Input:** Lower triangular matrix and the result vector
+
+**Output:** the solution
+
+**Usage:** Input the lower triangular matrix and the right-hand side vector.
+
+**Implementation/Code:**
 
 
+def forwardsub(L, b):
+    n = len(b)
+    x = [0] * n
+
+    for i in range(n):
+        x[i] = b[i] / L[i][i]
+        for j in range(i+1, n):
+            b[j] -= L[j][i] * x[i]
+    
+    return x
