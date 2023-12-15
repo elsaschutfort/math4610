@@ -689,7 +689,7 @@ The output is
 **Implemention/Code:** 
 
 
-def backsub(N, Y, U):
+``def backsub(N, Y, U):``
     X = [0 for x in range(N)]
 
     for i in range(N-1, -1, -1):
@@ -720,7 +720,7 @@ def backsub(N, Y, U):
 **Implementation/Code:**
 
 
-def forwardsub(L, b):
+``def forwardsub(L, b):``
     n = len(b)
     x = [0] * n
 
@@ -730,3 +730,88 @@ def forwardsub(L, b):
             b[j] -= L[j][i] * x[i]
     
     return x
+
+
+**Routine Name:** Guassian Elimination
+
+**Author:** Elsa Schutfort
+
+**Language:** Python
+
+**Description/Purpose:** The purpose of this routine is to solve systems of linear equations.
+
+**Input:** A matrix
+
+**Output:** The solution to the system of equations created by the matrix and vector.
+
+**Usage:** Input a matrix.
+
+**Implementation/Code:**
+
+def gaussian(A):
+    f = elimination(A)
+    if f != -1:
+       return
+    
+    backsub(A)
+
+def elimination(A):
+    for k in range(N):
+       
+        i_max = k
+        v_max = A[i_max][k]
+ 
+        for i in range(k + 1, N):
+            if (abs(A[i][k]) > v_max):
+                v_max = A[i][k]
+                i_max = i
+ 
+
+        if not A[k][i_max]:
+            return k
+        
+        if (i_max != k):
+            swap_row(A, k, i_max)
+ 
+        for i in range(k + 1, N):
+ 
+
+            f = A[i][k]/A[k][k]
+ 
+
+            for j in range(k + 1, N + 1):
+                A[i][j] -= A[k][j]*f
+ 
+            A[i][k] = 0
+ 
+
+    return -1
+
+
+
+def swap_row(A, i, j):
+ 
+    for k in range(N + 1):
+ 
+        temp = A[i][k]
+        A[i][k] = A[j][k]
+        A[j][k] = temp
+
+def backsub(mat):
+ 
+    x = [None for _ in range(N)]
+ 
+ 
+    for i in range(N-1, -1, -1):
+ 
+        x[i] = mat[i][N]
+ 
+        for j in range(i + 1, N):
+
+            x[i] -= mat[i][j]*x[j]
+ 
+        x[i] = (x[i]/mat[i][i])
+ 
+    print("\nSolution for the system:")
+    for i in range(N):
+        print("{:.8f}".format(x[i]))
