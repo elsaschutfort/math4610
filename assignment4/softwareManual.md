@@ -672,7 +672,35 @@ The output is
       
       #endif
 
+**Routine Name:** Back Substitution
 
-      
+**Author:** Elsa Schutfort
+
+**Language:** Python
+
+**Description/Purpose:** This routine solves a system of linear equations. 
+
+**Input:** the length of the upper triangular matrix, upper triangular matrix, and the right-hand side vector.
+
+**Output:** The solution to the system of equations created by the matrix and vector.
+
+**Usage/Example:** The usage is relatively simple, input the length of the matrix, an upper triangular matrix, and the corresponding right-hand side vector.
+
+**Implemention/Code:** 
+
+def backsub(N, Y, U):
+    X = [0 for x in range(N)]
+
+    for i in range(N-1, -1, -1):
+        s = Y[i]
+        for j in range(N, i, -1):
+            s -= U[i][j-1] * X[j-1]
+        try:
+            X[i] = s / U[i][i]
+        except:
+            X[i] = 0
+    return X
+
+
 
 
